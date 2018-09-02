@@ -7,12 +7,14 @@ const oc = require('oh-cache');
 const { PERSIST_DATA_TTL, LIVE_DATA_TTL } = oc;
 
 function getData(key) {
-  if(oc.hasVaidCache(key))
-    return oc.getCache(key);
+  if(oc.hasVaidCache(key)) //Check if valid cache exists
+    return oc.getCache(key); //Directly return data from cache without fetching from database
+
   getDataFromDB(function(results) {
-    oc.updateCache(key, results, PERSIST_DATA_TTL);
-    return oc.getCache(key);
+    oc.updateCache(key, results, PERSIST_DATA_TTL); //Store data fetched from database into cache
+    return oc.getCache(key); //Return data from cache
   });
+
 }
 
 console.log(getData('test-key')); //No cache found, get data from database

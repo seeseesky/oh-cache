@@ -14,6 +14,9 @@ function getData(key) {
     return oc.getCache(key);
   });
 }
+
+console.log(getData('test-key')); //No cache found, get data from database
+console.log(getData('test-key')); //Cache found, get data from cache directly
 ```
 
 ## Install

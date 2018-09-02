@@ -25,7 +25,7 @@ function getData(key) {
 - TTL (Time To Live) can be configurated by users
 
 ## Cache entry structure
-```json
+```
 {
     timestamp: 123092384,
     ttl: LIVE_DATA_TTL,
